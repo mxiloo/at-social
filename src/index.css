@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+body {
+  color: #161616;
+  background-color: #f4f4f4;
+  box-sizing: border-box;
+  
+  
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+

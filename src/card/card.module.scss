@@ -1,0 +1,122 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.card_top {
+   width: 100%;
+}
+
+.name_box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name {
+    color: #22A0BC;
+    font-family: "Manrope";
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.company {
+    color:  #595959;
+    font-family: "Manrope";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.dots {
+    background-image: url('../images/dots.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 4px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.city {
+    color:  #9C9C9C;
+    font-family: "Manrope";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.avatar {
+    background-image: url(../images/luffy.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 112px;
+    height: 120px;
+    border-radius: 8px;  
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.section {
+    display: grid;
+    width: 100%;
+    padding: 0;
+    grid-template-columns: repeat(auto-fit, minmax(360px ,1fr));
+    row-gap: 32px;
+    column-gap: 40px;
+    list-style: none;
+    margin: 0;
+}
+
+.card {
+    max-width: 360px;
+    width: 100%;
+    padding: 24px;
+    background-color: #FDFDFD;
+    margin: 0;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+
+@media screen and (max-width: 1440px) {
+    .section {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 32px;
+        column-gap: 40px;
+        justify-content: center;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    .section {
+        row-gap: 20px;
+        column-gap: 20px;
+    }
+
+    .card {
+        max-width: 162px;
+        padding: 16px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}   
