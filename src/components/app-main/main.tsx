@@ -1,19 +1,20 @@
-import React, { useCallback, useEffect } from "react";
-import Card from "../card/card.tsx";
+import React from "react";
+import Cards from "../cards/cards.tsx";
 import styles from './main.module.scss';
-import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../utils/api.ts";
+import { useSelector } from "react-redux";
 import { archivedSelector, usersSelector } from "../../services/selectors/selectors.ts";
-import { setUsers } from "../../services/reducers/users-slice.ts";
 import { isLoadingSelector } from "../../services/selectors/selectors.ts";
-import { setIsLoading } from "../../services/reducers/preloader-slice.ts";
 import Preloader from "../preloader/preloader.tsx";
+import Title from "../title/title.tsx";
+import { User } from "../../services/reducers/users-slice.ts";
 
 function Main() {
     
-    const users = useSelector(usersSelector);
-    const archived = useSelector(archivedSelector);
+    const users: User[] = useSelector(usersSelector);
     const isLoading = useSelector(isLoadingSelector);
+
+    const usersUnArchived = users.filter(user => !user.isAchived)
+    const usersArchived = users.filter(user => user.isAchived)
 
     return (
         <main className={styles.section}>
@@ -21,13 +22,13 @@ function Main() {
                 <Preloader />
             ) : (
                 <>
-                    <h2 className={styles.title}>Активные</h2>
-                    <Card users={users} archived={[]}/>
+                    <Title word={'Активыне'}/>
+                    <Cards users={usersUnArchived} />
                     
-                    {archived.length > 0 && (
+                    {usersArchived.length > 0 && (
                         <div className={styles.archived_card}>
-                            <h2 className={styles.title}>Архив</h2>
-                            <Card users={archived} archived={archived}/>
+                            <Title word={'Архив'}/>
+                            <Cards users={usersArchived} />
                         </div>
                     )}
                 </>

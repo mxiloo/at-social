@@ -1,17 +1,23 @@
 import React, { useCallback, useState } from "react";
-import styles from './card.module.scss';
-import { useDispatch } from "react-redux";
-import { setArchivedUsers, setDeleteUser, setUnArchivedUsers, User } from "../../services/reducers/users-slice.ts";
+import { useDispatch, useSelector } from "react-redux";
+import { setArchiveToggle, setDeleteUser, User } from "../../services/reducers/users-slice.ts";
 import { NavLink } from "react-router-dom";
+import { citySelector } from "../../services/selectors/selectors.ts";
+import styles from './card.module.scss'
 
-function Card({users, archived}) {
+
+
+function Card({user, users}) {
 
     const [visibleStates, setVisibleStates] = useState<object>({});
+
+    const city = useSelector(citySelector);
+    const currentCity = user?.id in city ? city[user?.id] : 'Санкт-Петербург';
     
     const dispatch = useDispatch();
 
     const handleArchiveUser = useCallback((userId: number) => {
-        dispatch(setArchivedUsers(userId));
+        dispatch(setArchiveToggle({id: userId, toggle:true}));
         toggleVisible(userId);
     }, [dispatch]);
 
@@ -21,7 +27,7 @@ function Card({users, archived}) {
     }, [dispatch]);
 
     const handleUnArchiveUser = useCallback((userId: number) => {
-        dispatch(setUnArchivedUsers(userId))
+        dispatch(setArchiveToggle({id: userId, toggle:false}))
         toggleVisible(userId);
     }, [dispatch])
 
@@ -33,23 +39,20 @@ function Card({users, archived}) {
     }, []);
 
     return (
-        <section>
-            <ul className={styles.section}>
-                {users?.map(user => (
-                    <li key={user?.id} className={styles.card}>
-                        <div className={styles.avatar}></div>
-                        <div className={styles.box}>
+        <section className={styles.card}>
+            <div className={styles.avatar}></div>
+            <div className={styles.box}>
                             <div className={styles.card_top}>
                                 <div className={styles.name_box}>
                                     <span className={styles.name}>{user?.username}</span>
                                     <button onClick={() => toggleVisible(user?.id)} className={styles.dots}></button>
                                     {visibleStates[user?.id] ?  
                                         <ul className={styles.dropdown}>
-                                            <NavLink to={`/edit/${user?.id}`}>
+                                            <NavLink className={styles.link} to={`/edit/${user?.id}`}>
                                                 <li className={styles.text}>Редактировать</li>
                                             </NavLink>
                                             
-                                            {users === archived ? 
+                                            {user.isAchived ? 
                                                 <li className={styles.text} onClick={() => handleUnArchiveUser(user?.id)}>Разархивировать</li> 
                                                 :
                                                 <li className={styles.text} onClick={() => handleArchiveUser(user?.id)}>Архивировать</li>
@@ -60,13 +63,10 @@ function Card({users, archived}) {
                                 </div>
                                 <span className={styles.company}>{user?.company?.name}</span>
                             </div>
-                            <span className={styles.city}>Санкт-Петербург</span>
+                            <span className={styles.city}>{currentCity}</span>
                         </div>
-                    </li>
-                ))}
-            </ul>
         </section>
-    );
+    )
 }
 
-export default Card;
+export default Card
