@@ -1,12 +1,12 @@
 import React from "react"
 import styles from './header.module.scss';
-import { getUsers } from "../utils/api.ts";
+import { NavLink } from "react-router-dom";
 
 function Header() {
     return (
         <header className={styles.section}>
             <div className={styles.container}>
-                <div className={styles.logo}></div>
+                <NavLink to={'/'}><div className={styles.logo}></div></NavLink>
                 <div className={styles.box}>
                     <div className={styles.like}></div>
                     <div className={styles.bell}></div>

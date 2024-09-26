@@ -32,10 +32,25 @@ const usersSlice = createSlice({
                 state.archivedUsers.push(archivedUser);
                 state.users = state.users.filter(user => user.id !== action.payload);
             }
+        },
+        setUnArchivedUsers(state, action) {
+            const unArchivedUser = state.archivedUsers.find(user => user.id === action.payload);
+            if (unArchivedUser) {
+                state.users.push(unArchivedUser);
+                state.archivedUsers = state.archivedUsers.filter(user => user.id !== action.payload);
+            }
+        },
+        setDeleteUser(state, action) {
+            const deletedUser = state.users.find(user => user.id === action.payload);
+            const deletedUserArchive = state.archivedUsers.find(user => user.id === action.payload);
+            if (deletedUser || deletedUserArchive) {
+                state.users = state.users.filter(user => user.id !== action.payload);
+                state.archivedUsers = state.archivedUsers.filter(user => user.id !== action.payload);
+            }
         }
     },
 });
 
-export const { setUsers, setArchivedUsers } = usersSlice.actions;
+export const { setUsers, setArchivedUsers, setDeleteUser, setUnArchivedUsers } = usersSlice.actions;
 
 export default usersSlice.reducer;

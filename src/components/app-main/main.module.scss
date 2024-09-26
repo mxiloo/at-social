@@ -4,6 +4,10 @@
     padding: 0 16px;
 }
 
+.archived_card {
+    filter: grayscale(100%);
+  }
+
 .title {
     font-family: "Manrope";
     font-weight: 600;
