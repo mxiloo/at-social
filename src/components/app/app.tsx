@@ -39,9 +39,9 @@ function App() {
                 <Route path='/' element={<Main/>} />
                 <Route path='/edit/:id' element={<EditPage/>}>
                     <Route path='/edit/:id/data' element={<ProfileData/>}/>
-                    <Route path='/edit/:id/workspace'/>
-                    <Route path='/edit/:id/privacy'/>
-                    <Route path='/edit/:id/security'/>
+                    <Route path='/edit/:id/workspace' element={'Страница в разработке ^_^'} />
+                    <Route path='/edit/:id/privacy' element={'Страница в разработке ^_^'} />
+                    <Route path='/edit/:id/security' element={'Страница в разработке ^_^'} />
                 </Route>
             </Routes>
 

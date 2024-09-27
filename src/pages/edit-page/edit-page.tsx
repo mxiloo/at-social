@@ -4,7 +4,6 @@ import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom"
 import { usersSelector } from "../../services/selectors/selectors.ts"
 import styles from './edit-page.module.scss'
 import { setProfile } from "../../services/reducers/profile-slice.ts"
-import arrow from '../../images/arrow-left.svg'
 
 function EditPage() {
 
@@ -28,7 +27,7 @@ function EditPage() {
     return (
         <section className={styles.full}>
             <NavLink to={'/'} className={styles.back_link}>
-                <img src={arrow} alt="arrow left" className={styles.arrow}/>
+                <div className={styles.arrow}></div>
                 <span className={styles.text_link}>Назад</span>
             </NavLink>
             <div className={styles.section}>
