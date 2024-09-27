@@ -8,9 +8,12 @@ import { getUsers } from "../../utils/api.ts";
 import { setIsLoading } from "../../services/reducers/preloader-slice.ts";
 import { setUsers } from "../../services/reducers/users-slice.ts";
 import ProfileData from "../../pages/profile-data-page/profile-data.tsx";
+import { modalSelector } from "../../services/selectors/selectors.ts";
+import Modal from "../modal/modal.tsx";
 
 function App() {
 
+    const isModalOpen = useSelector(modalSelector);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -35,12 +38,16 @@ function App() {
             <Routes>
                 <Route path='/' element={<Main/>} />
                 <Route path='/edit/:id' element={<EditPage/>}>
-                    <Route path='/edit/:id' element={<ProfileData/>}/>
+                    <Route path='/edit/:id/data' element={<ProfileData/>}/>
                     <Route path='/edit/:id/workspace'/>
                     <Route path='/edit/:id/privacy'/>
                     <Route path='/edit/:id/security'/>
                 </Route>
             </Routes>
+
+            {isModalOpen && (
+                <Modal />
+            )}
         </div>
     )
 }

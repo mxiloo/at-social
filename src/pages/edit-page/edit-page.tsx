@@ -35,7 +35,7 @@ function EditPage() {
                 <div className={styles.container}>
                     <div className={styles.avatar}></div>
                     <ul className={styles.text_box}>
-                        <NavLink className={switchClassName} to={`/edit/${user?.id}`}>
+                        <NavLink className={switchClassName} to={`/edit/${user?.id}/data`}>
                             <li className={styles.text}>
                                 Данные профиля
                             </li>

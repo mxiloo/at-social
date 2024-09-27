@@ -10,6 +10,7 @@
     flex-direction: row;
     gap: 20px;
     z-index: 9;
+    max-width: 454px;
 }
 
 .dropdown {
@@ -49,7 +50,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
     width: 100%;
 }
 
@@ -116,7 +116,8 @@
     background-image: url(../../images/luffy.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    width: 112px;
+    max-width: 112px;
+    width: 100%;
     height: 120px;
     border-radius: 8px;  
     margin: 0;
@@ -128,20 +129,66 @@
     color: #161616;
 }
 
-
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 790px) {
     .card {
-        max-width: 360px;
+        max-width: 100%;
     }
 }
 
 @media screen and (max-width: 450px) {
     .card {
-        max-width: 162px;
+        height: 242px;
         padding: 16px;
         border-radius: 8px;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .name {
+        font-size: 18px;
+        line-height: 25px;
+        max-width: 120px;
+    }
+
+    .test {
+        max-width: 120px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .company {
+        
+        font-size: 14px;
+        line-height: 19px;
+        
+    }
+
+    .city {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .avatar {
+        max-width: 130px;
+        height: 120px;
+    }
+
+    .box {
+        row-gap: 12px;
+    }
+
+    .dropdown {
+        gap: 10px;
+        right: 15px;
+        top: 40px;
+        padding: 16px 20px;
+        max-width: 160px;
+    }
+
+    .text {
+        font-size: 14px;
+        line-height: 19px;
     }
 }  

@@ -11,3 +11,5 @@ export const isLoadingSelector = (store) => store.isLoading.isLoading;
 
 export const profileSelector = (store) => store.profile.profile;
 
+export const modalSelector = (store) => store.modal.isOpen;
+

@@ -2,7 +2,7 @@ import React from "react"
 import styles from './input.module.scss'
 
 
-function Input({value, setValue, placeholder}) {
+function Input({value, setValue, placeholder, errorMessage}) {
 
     const handleClear = () => {
         setValue('')
@@ -15,6 +15,7 @@ function Input({value, setValue, placeholder}) {
                 <input className={styles.input}  value={value} onChange={e => setValue(e.target.value)} type={'text'} placeholder={`${placeholder}`} />
                 {value ? <div className={styles.clear} onClick={() => handleClear()}></div> : null}
             </div>
+            {value ? null : <p className={styles.error_message}>{errorMessage}</p>}
         </label>
     )
 }

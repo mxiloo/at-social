@@ -73,3 +73,17 @@
     line-height: 22px;
     color: #595959;
 }
+
+@media screen and (max-width: 750px) {
+    .like {
+        display: none;
+    }
+    
+    .bell {
+        display: none;
+    }
+
+    .name {
+        display: none;
+    }
+}

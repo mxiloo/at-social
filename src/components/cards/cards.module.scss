@@ -2,6 +2,7 @@ ul {
     list-style: none;
 }
 
+
 .section {
     display: grid;
     width: 100%;
@@ -14,17 +15,13 @@ ul {
 
 @media screen and (max-width: 1440px) {
     .section {
-        display: flex;
-        flex-wrap: wrap;
-        row-gap: 32px;
-        column-gap: 40px;
-        justify-content: center;
+        row-gap: 20px;
+        column-gap: 20px;
     }
 }
 
 @media screen and (max-width: 450px) {
     .section {
-        row-gap: 20px;
-        column-gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(162px ,1fr));
     }
-}      
+}       

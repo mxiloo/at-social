@@ -11,10 +11,10 @@ import { User } from "../../services/reducers/users-slice.ts";
 function Main() {
     
     const users: User[] = useSelector(usersSelector);
-    const isLoading = useSelector(isLoadingSelector);
+    const isLoading:boolean = useSelector(isLoadingSelector);
 
-    const usersUnArchived = users.filter(user => !user.isAchived)
-    const usersArchived = users.filter(user => user.isAchived)
+    const usersUnArchived = users.filter(user => !user.isAchived);
+    const usersArchived = users.filter(user => user.isAchived);
 
     return (
         <main className={styles.section}>
@@ -26,7 +26,7 @@ function Main() {
                     <Cards users={usersUnArchived} />
                     
                     {usersArchived.length > 0 && (
-                        <div className={styles.archived_card}>
+                        <div className={styles.archived_cards}>
                             <Title word={'Архив'}/>
                             <Cards users={usersArchived} />
                         </div>

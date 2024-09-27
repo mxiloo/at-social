@@ -48,7 +48,7 @@ function Card({user, users}) {
                                     <button onClick={() => toggleVisible(user?.id)} className={styles.dots}></button>
                                     {visibleStates[user?.id] ?  
                                         <ul className={styles.dropdown}>
-                                            <NavLink className={styles.link} to={`/edit/${user?.id}`}>
+                                            <NavLink className={styles.link} to={`/edit/${user?.id}/data`}>
                                                 <li className={styles.text}>Редактировать</li>
                                             </NavLink>
                                             
@@ -61,7 +61,10 @@ function Card({user, users}) {
                                          </ul>
                                     : null}
                                 </div>
-                                <span className={styles.company}>{user?.company?.name}</span>
+                                <div className={styles.test}>
+                                    <span className={styles.company}>{user?.company?.name}</span>
+                                </div>
+                                
                             </div>
                             <span className={styles.city}>{currentCity}</span>
                         </div>
