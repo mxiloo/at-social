@@ -1,9 +1,10 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom"
-import { usersSelector } from "../../services/selectors/selectors.ts"
+import { isLoadingSelector, usersSelector } from "../../services/selectors/selectors.ts"
 import styles from './edit-page.module.scss'
 import { setProfile } from "../../services/reducers/profile-slice.ts"
+import Preloader from "../../components/preloader/preloader.tsx"
 
 function EditPage() {
 
@@ -12,6 +13,7 @@ function EditPage() {
     const users = useSelector(usersSelector);
     const userId = parseInt(id, 10);
     const user = users.find(user => user?.id === userId);
+    const isLoading:boolean = useSelector(isLoadingSelector);
 
     const dispatch = useDispatch();
 
@@ -56,8 +58,7 @@ function EditPage() {
                         </NavLink>
                     </ul>
                 </div>
-                
-                <Outlet />
+                {isLoading ? (<Preloader />) : (<Outlet />)}
             </div>
         </section>
     )
