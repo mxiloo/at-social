@@ -86,7 +86,7 @@
 }
 
 .dots {
-    background-image: url('../../images/dots.svg');
+    background-image: url('../../images/dots.png');
     background-repeat: no-repeat;
     background-size: contain;
     width: 4px;
@@ -96,11 +96,9 @@
     border: none;
     font: inherit;
     outline: inherit;
-    transition: color .1s ease-in-out;
 
     &:hover {
-        color: #22A0BC;
-        fill: #22A0BC;
+        background-image: url('../../images/dots-hover.png');
     }
 }
 
@@ -190,5 +188,14 @@
     .text {
         font-size: 14px;
         line-height: 19px;
+        &:hover {
+            color: #161616;
+        }
+    }
+
+    .dots {
+        &:hover {
+            background-image: url('../../images/dots.png');
+        }
     }
 }  
